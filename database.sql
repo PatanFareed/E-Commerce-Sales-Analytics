@@ -2,7 +2,7 @@ use ecommerce_analytics;
 SELECT count("Order_ID") from orders;
 RENAME TABLE ecommerce_cleaned TO orders;
 
--- step 4 Basic Bussiness Qsns
+-- Basic Bussiness Qsns
 SELECT count("Order_ID") from orders;
 SELECT count("Customer_ID") from orders;
 SELECT SUM(Gross_Sales) FROM orders;
@@ -12,7 +12,7 @@ SELECT SUM(`Profit`) FROM orders;
 SELECT AVG(`Net_Sales`) FROM orders;
 SELECT SUM(`Quantity`) FROM orders;
 
--- step 4B  Sales Analysis
+-- Sales Analysis
 
 SELECT `Month_Name`, SUM(net_sales) FROM orders
 GROUP BY `Month_Name`;
@@ -33,7 +33,7 @@ GROUP BY `Product_Name`
 ORDER BY SUM(`Profit`) DESC
 limit 10;
 
--- Step 4C Customer Analysis
+-- Customer Analysis
 SELECT `Customer_Name`, SUM(`Net_Sales`) FROM orders
 GROUP BY `Customer_Name`
 ORDER BY SUM(`Net_Sales`) DESC
@@ -54,7 +54,7 @@ HAVING COUNT(`Order_ID`)>1;
 SELECT `Customer_Name`, AVG(`Net_Sales`) FROM orders
 GROUP BY `Customer_Name`;
 
--- Step 4D Business Performance
+-- Business Performance
 SELECT `Payment_Method`, SUM(`Net_Sales`) FROM orders
 GROUP BY `Payment_Method`;
 SELECT `Sales_Channel`, SUM(`Net_Sales`) FROM orders
@@ -66,7 +66,7 @@ GROUP BY `Order_Status`;
 SELECT `Discount_%`, SUM(`Net_Sales`),SUM(`Profit`) FROM orders
 GROUP BY `Discount_%`;
 
--- Step 4E Advanced SQL
+-- Advanced 
 
 SELECT Category, Product, Sales,
 DENSE_RANK() OVER(PARTITION BY Category ORDER BY Sales DESC) as Ranking
